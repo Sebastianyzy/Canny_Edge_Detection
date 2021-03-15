@@ -24,7 +24,7 @@ def gaussian_kernel(size, sigma):
 
 
 # gaussian filter is used to smoothing the image
-def gaussian_blur(img, sigma=3, kernel_size=5):
+def gaussian_blur(img, sigma=None, kernel_size=None):
     kernel = gaussian_kernel(kernel_size, sigma)
     # convolve
     img = signal.convolve2d(img, kernel, mode='same')
@@ -44,12 +44,12 @@ def sobel_filters(img, gx, gy):
     return mag, theta
 
 
-def canny_edge_detection(img, low=None, high=None, sigma=3):
+def canny_edge_detection(img, low=None, high=None, sigma=None, kernel_size=None):
     # convert to grayscale
     global neighb_1_x, neighb_1_y, neighb_2_y, neighb_2_x
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     # noise reduction
-    img = gaussian_blur(img, sigma, 3)
+    img = gaussian_blur(img, sigma, kernel_size)
 
     # get gradient
     gx = np.array([[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]], np.float32)
@@ -128,7 +128,7 @@ def main():
     img = 'image1.jpg'
     print("Apply canny_edge_detection on", img, "...")
     image = cv2.imread(img)
-    canny_img = canny_edge_detection(image, low=10, high=255, sigma=3)
+    canny_img = canny_edge_detection(image, low=10, high=255, sigma=3, kernel_size=5)
     plt.figure()
     plt.imshow(canny_img)
     print("Saving output image...")

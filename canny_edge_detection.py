@@ -125,14 +125,16 @@ def canny_edge_detection(img, low=None, high=None, sigma=None, kernel_size=None)
 
 
 def main():
-    img = 'image1.jpg'
+    input_name = input("Select image:")
+    img = input_name
     print("Apply canny_edge_detection on", img, "...")
     image = cv2.imread(img)
     canny_img = canny_edge_detection(image, low=10, high=255, sigma=3, kernel_size=5)
     plt.figure()
     plt.imshow(canny_img)
     print("Saving output image...")
-    plt.savefig("canny_edge_detection.jpg")
+    name = input("Enter image name:")
+    plt.savefig(str(name))
     print("Image Saved.")
     plt.show()
     print("Edge Detection Complete.")

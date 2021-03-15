@@ -125,7 +125,7 @@ def canny_edge_detection(img, low=None, high=None, sigma=3):
 
 
 def main():
-    img = 'image1.jfif'
+    img = 'image1.jpg'
     print("Apply canny_edge_detection on", img, "...")
     image = cv2.imread(img)
     canny_img = canny_edge_detection(image, low=10, high=255, sigma=3)

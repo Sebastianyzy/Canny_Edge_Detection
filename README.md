@@ -7,7 +7,7 @@
 4. Threshold
 5. Edge Tracking by Hysteresis
 
-**Install :**
+**Install :**\
 `numpy`\
 `cv2`\
 `matplotlib.pyplot`\
